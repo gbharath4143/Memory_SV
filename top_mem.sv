@@ -9,6 +9,7 @@ endclass
 module top_mem_tb();
 	top_mem top;
 	initial begin
+		$display("TOP");
 		top=new();
 		top.run();
 	end

@@ -7,6 +7,7 @@ class agent_mem();
 	coverage_mem coverage;
 
 	function void run();
+		$display("AGENT");
 
 		gen=new();
 		bfm=new();
@@ -24,11 +25,3 @@ class agent_mem();
 
 	endfunction
 endclass
-
-module agent_mem_tb();
-	agent_mem agent;
-	initial begin
-		agent=new();
-		agent.run();
-	end
-endmodule
