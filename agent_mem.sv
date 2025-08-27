@@ -1,27 +1,25 @@
-class agent_mem();
-
-	generator_mem gen;
-	bfm_mem bfm;
-	monitor_mem monitor;
-	scoreboard_mem scoreboard;
-	coverage_mem coverage;
-
-	function void run();
-		$display("AGENT");
-
-		gen=new();
-		bfm=new();
-		monitor=new();
-		scoreboard=new();
-		coverage=new();
-
-		fork
-			gen.run();
-			bfm.run();
-			monitor.run();
-			scoreboard.run();
-			coverage.run();
-		join
-
-	endfunction
+class agent_mem;
+  virtual interface interface_mem vif;
+  generator_mem gen;
+  bfm_mem bfm;
+  monitor_mem mon;
+  scoreboard_mem sbd;
+  coverage_mem cov;
+  task run();
+    $display("AGENT");
+    gen=new();
+    bfm=new();
+    mon=new();
+    sbd=new();
+    cov=new();
+    bfm.vif=vif;
+    mon.vif=vif;
+    fork
+      gen.run();
+      bfm.run();
+      mon.run();
+      sbd.run();
+      cov.run();
+    join
+  endtask
 endclass
