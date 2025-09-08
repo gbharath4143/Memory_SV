@@ -24,14 +24,22 @@ module top_mem();
     res=1;
     @(posedge clk);
     res=0;
-    $display("TOP");
+  end
+
+  initial begin
     env=new();
     env.vif=pif;
+    $display("############## TOP START ###############");
     env.run();
   end
 
   initial begin
+    $dumpfile("dump.vcd"); 
+    $dumpvars;
     #5000;
+    $display("############ SBD_S =%0d ############",common_mem::sbd_s);
+    $display("############ SBD_F =%0d ############",common_mem::sbd_f);
+    $display("########### COV =%0.2f ############",$get_coverage);
     $finish;
   end
 endmodule

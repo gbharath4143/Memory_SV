@@ -6,7 +6,7 @@ class agent_mem;
   scoreboard_mem sbd;
   coverage_mem cov;
   task run();
-    $display("AGENT");
+    $display("############## AGT START ###############");
     gen=new();
     bfm=new();
     mon=new();
